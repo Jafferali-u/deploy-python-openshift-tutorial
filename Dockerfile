@@ -1,11 +1,7 @@
-from alpine:latest
-RUN apk add --no-cache python3-dev \
-    && pip3 install --upgrade pip
-
-WORKDIR /app
+FROM python:2.7
 COPY . /app
-
-RUN pip3 --no-cache-dir install -r requirements.txt
+WORKDIR /app
+RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
