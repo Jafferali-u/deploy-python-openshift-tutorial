@@ -1,13 +1,5 @@
-from alpine:latest
-RUN apk add --no-cache python3-dev \
-    && pip3 install --upgrade pip
+FROM tiangolo/uwsgi-nginx-flask:python3.8
 
-WORKDIR /app
-COPY . /app
+COPY main.py /app/main.py
 
-RUN pip3 --no-cache-dir install -r requirements.txt
-
-EXPOSE 5000
-
-ENTRYPOINT ["python3"]
-CMD ["helloworld.py"]
+EXPOSE 80
