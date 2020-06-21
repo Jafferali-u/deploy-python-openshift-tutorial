@@ -1,9 +1,14 @@
 FROM python:2.7
-COPY . /app
+
+# We copy just the requirements.txt first to leverage Docker cache
+COPY ./requirements.txt /app/requirements.txt
+
 WORKDIR /app
+
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+COPY . /app
 
-ENTRYPOINT ["python3"]
-CMD ["helloworld.py"]
+ENTRYPOINT [ "python" ]
+
+CMD [ "app.py" ]
