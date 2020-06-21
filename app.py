@@ -1,14 +1,12 @@
-from flask import Flask
-from flask_restful import Resource, Api
+# flask_web/app.py
 
+From flask import Flask
 app = Flask(__name__)
-api = Api(app)
 
-class HelloWorld(Resource):
-    def get(self):
-        return {'hello': 'world'}
+@app.route('/')
+def hello_world:
+    return 'Hey, we have Flask in a Docker container!'
 
-api.add_resource(HelloWorld, '/')
 
-if __name__ == '__main__':
+if __name == '__main__':
     app.run(debug=True, host='0.0.0.0')
